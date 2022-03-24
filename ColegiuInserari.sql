@@ -28,6 +28,53 @@ INSERT INTO Specialitati VALUES
 ('Administrarea bazelor de date')
 
 
+INSERT INTO Raion VALUES
+('Orhei'),
+('Falesti'),
+('Donduseni'),
+('Drochia'),
+('Dubasari'),
+('Cahul'),
+('Ungheni'),
+('Edinet')
+
+Insert Into Localitate values
+('Andreevca', 1),
+('Berezlogi', 1),
+('Biesti', 1),
+('Bolohan', 1),
+('Burghelea', 2),
+('Calugar', 2),
+('Chetris', 2),
+('Ciolacu Nou', 2),
+('Elenovca', 3),
+('Frasin', 3),
+('Horodiste', 3),
+('Plop', 3),
+('Palanca', 4),
+('Pelinia', 4),
+('Petreni', 4),
+('Sergheuca', 4),
+('Molovata', 5),
+('Oxentea', 5),
+('Pohrebea', 5),
+('Roghi', 5),
+('Rosu', 6),
+('Satuc', 6),
+('Spicoasa', 6),
+('Tataresti', 6),
+('Tescureni', 7),
+('Todiresti', 7),
+('Untesti', 7),
+('Veverita', 7),
+('Viisoara', 8),
+('Volodeni', 8),
+('Zabriceni', 8),
+('Trinca', 8)
+
+
+
+
 INSERT INTO Grupe VALUES
 ('P-2111', 2021, 1, 10),
 ('P-2012', 2020, 1, 11),

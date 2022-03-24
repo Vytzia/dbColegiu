@@ -56,24 +56,34 @@ CREATE TABLE Catedre(
 )
 
 GO
-SELECT GETDATE()
+CREATE TABLE ObjStud(
+					IdObjStud INT IDENTITY(1,1) PRIMARY KEY,
+					NmObjStud char(50),
+					IdCatedre INT FOREIGN KEY REFERENCES Catedre (id_catedra)
+					)
 
--- AFISEAZA ASCENDENT TOTI STUDENTII DIN P-2022, C-1841, W-1931 SI B-2111
-SELECT * FROM Studenti
-WHERE grupa = 'P-2022'
-ORDER BY nume ASC, prenume ASC
+GO
+CREATE TABLE ObjStGr(
+					IdObjStGr INT IDENTITY(1,1) PRIMARY KEY,
+					grupa varchar(10) FOREIGN KEY REFERENCES Grupe (grupa),
+					IdObjStud INT FOREIGN KEY REFERENCES ObjStud (IdObjStud),
+					IdProfesor INT FOREIGN KEY REFERENCES Profesori (idProfesor)
+					)
 
-SELECT * FROM Studenti
-WHERE grupa = 'C-1841'
-ORDER BY nume ASC, prenume ASC
 
-SELECT * FROM Studenti
-WHERE grupa = 'W-1931'
-ORDER BY nume ASC, prenume ASC
+GO			
+CREATE TABLE Raion(
+                  IdRaion INT IDENTITY(1,1) PRIMARY KEY,
+				  NmRaion Char(50) ,
+				  )
 
-SELECT * FROM Studenti
-WHERE grupa = 'B-2111'
-ORDER BY nume ASC, prenume ASC
+GO
+CREATE TABLE Localitate(
+                  IdLocalitate INT IDENTITY(1,1) PRIMARY KEY,
+				  NmLocalit Char(50) ,
+				  IdRaion INT FOREIGN KEY REFERENCES Raion (IdRaion)
+				  )
+
 
 -- AFISEAZA NUMARUL DE STUDENTI DIN P-2022, C-1841, W-1931 SI B-2111
 SELECT grupa, COUNT(nume) AS NrStudenti FROM Studenti
