@@ -1,0 +1,7 @@
+List of things that must be done, add <COMPLETED> after.. well, completing it. Add whatever you feel like is missing.
+
+>curriculum
+>implement the curriculum into sql through ObjStGr
+>add grades for every student
+>complete some of this bs: 
+	https://moodle1.ceiti.md/mod/assign/view.php?id=37456
