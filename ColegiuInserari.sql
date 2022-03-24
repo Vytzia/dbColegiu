@@ -72,7 +72,19 @@ Insert Into Localitate values
 ('Zabriceni', 8),
 ('Trinca', 8)
 
-
+Insert Into ObjStud(IdObjStud, NmObjStud) values
+(1,'Matematica'),
+(2,'Informatica'),
+(3,'Limba si literatura romana'),
+(4,'Istoria'),
+(5,'Chimia'),
+(6,'Biologia'),
+(7,'Geografia'),
+(8,'Fizica'),
+(9,'Educatia fizica'),
+(10,'Limba engleza'),
+(11,'Limba franceza')
+--NEEDS MORE CLASSES
 
 
 INSERT INTO Grupe VALUES
