@@ -457,3 +457,8 @@ INSERT INTO ObjStGr VALUES
 
 
 Go
+
+SELECT COUNT(Nume) as NrElevi FROM Studenti WHERE LEFT(grupa,1)='P'
+
+INSERT INTO Note VALUES
+()

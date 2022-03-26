@@ -89,7 +89,7 @@ CREATE TABLE ObjStGr(
 GO			
 
 CREATE TABLE Note(
-					IdNota INT,
+					IdNota INT IDENTITY(1,1) PRIMARY KEY,
 					IdStudent INT FOREIGN KEY REFERENCES Studenti (id_student),
 					IdObjStud INT FOREIGN KEY REFERENCES ObjStud (IdObjStud),
 					Data DATE,
@@ -106,7 +106,7 @@ Go
 
 SELECT * FROM Profesori
 SELECT * FROM Grupe
-SELECT * FROM Studenti 
+SELECT nume, grupa FROM Studenti 
 SELECT * FROM ObjStud ORDER BY NmObjStud
 
 
