@@ -45,6 +45,7 @@ CREATE TABLE Studenti(
 	sex char(1) CHECK (sex='f' OR sex='m'),
 	data_nasterii date NOT NULL,
 	gsm varchar(64),
+	localitate INT FOREIGN KEY REFERENCES Localitate(IdLocalitate),
 	grupa varchar(10) FOREIGN KEY REFERENCES Grupe(grupa)
 )
 
