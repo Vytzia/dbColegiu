@@ -1,25 +1,28 @@
-﻿GO
+﻿set dateformat dmy
+use master
+
+GO
+
 IF EXISTS(SELECT'True' FROM SYS.DATABASES WHERE NAME='CEITI')
 BEGIN
+alter database CEITI set single_user with rollback immediate
 DROP DATABASE CEITI
 END
 
 
 GO
-CREATE DATABASE Colegiu
+
+CREATE DATABASE CEITI
 
 GO
-SET DATEFORMAT dmy
+
+USE CEITI
 
 GO
 CREATE TABLE Profesori(
 	idProfesor int IDENTITY(1,1) PRIMARY KEY,
 	nmProfesor varchar(64)
 )
-
-SELECT * FROM Profesori
-SELECT * FROM Grupe
-SELECT * FROM Studenti 
 
 GO
 CREATE TABLE Specialitati(
@@ -36,6 +39,18 @@ CREATE TABLE Grupe(
 	PRIMARY KEY (grupa)
 )
 
+CREATE TABLE Raion(
+                  IdRaion INT IDENTITY(1,1) PRIMARY KEY,
+				  NmRaion Char(50) ,
+				  )
+
+GO
+CREATE TABLE Localitate(
+                  IdLocalitate INT IDENTITY(1,1) PRIMARY KEY,
+				  NmLocalit Char(50) ,
+				  IdRaion INT FOREIGN KEY REFERENCES Raion (IdRaion)
+				  )
+
 GO
 CREATE TABLE Studenti(
 	id_student int IDENTITY(1,1) PRIMARY KEY,
@@ -50,6 +65,7 @@ CREATE TABLE Studenti(
 )
 
 GO
+
 CREATE TABLE Catedre(
 	id_catedra int IDENTITY(1,1) UNIQUE,
 	numeCatedra varchar(64) NOT NULL,
@@ -70,20 +86,28 @@ CREATE TABLE ObjStGr(
 					IdObjStud INT FOREIGN KEY REFERENCES ObjStud (IdObjStud),
 					IdProfesor INT FOREIGN KEY REFERENCES Profesori (idProfesor)
 					)
-
-
 GO			
-CREATE TABLE Raion(
-                  IdRaion INT IDENTITY(1,1) PRIMARY KEY,
-				  NmRaion Char(50) ,
-				  )
 
-GO
-CREATE TABLE Localitate(
-                  IdLocalitate INT IDENTITY(1,1) PRIMARY KEY,
-				  NmLocalit Char(50) ,
-				  IdRaion INT FOREIGN KEY REFERENCES Raion (IdRaion)
-				  )
+CREATE TABLE Note(
+					IdNota INT,
+					IdStudent INT FOREIGN KEY REFERENCES Studenti (id_student),
+					IdObjStud INT FOREIGN KEY REFERENCES ObjStud (IdObjStud),
+					Data DATE,
+					Nota INT Check(Nota > 0 AND Nota < 11)
+					)
+
+Go
+
+CREATE VIEW FeteDinP2012 AS
+SELECT * FROM Studenti
+WHERE grupa = 'P-2012' AND sex='f'
+
+Go
+
+SELECT * FROM Profesori
+SELECT * FROM Grupe
+SELECT * FROM Studenti 
+SELECT * FROM ObjStud ORDER BY NmObjStud
 
 
 -- AFISEAZA NUMARUL DE STUDENTI DIN P-2022, C-1841, W-1931 SI B-2111
@@ -102,15 +126,6 @@ WHERE data_nasterii = (Select min(data_nasterii) from Studenti)
 --AFISEAZA CEL MAI TANAR STUDENT DIN TOATA INSTITUTIA
 SELECT nume, prenume, YEAR(GetDate())-YEAR(data_nasterii) AS Varsta FROM Studenti
 WHERE data_nasterii = (Select max(data_nasterii) from Studenti)
-
-
-
-
-
-CREATE VIEW FeteDinP2012 AS
-SELECT * FROM Studenti
-WHERE grupa = 'P-2012' AND sex='f'
-
 
 SELECT * FROM FeteDinP2012
 

@@ -1,5 +1,7 @@
-﻿--GO
---SET DATEFORMAT dmy
+﻿USE CEITI
+
+GO
+SET DATEFORMAT dmy
 
 --TRUNCATE TABLE Studenti
 
